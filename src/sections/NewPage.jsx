@@ -32,48 +32,6 @@ export function NewPage() {
     const incrementCost = () => {
         setCostOfTheAugment(preCost => Math.round(preCost * 2));
     }
-    const styles = StyleSheet.create({
-        container: {
-            flex: 1,
-            backgroundColor: '#fff',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            paddingTop: 10
-        },
-        border: {
-            borderTopColor : 'black',
-            borderTopWidth: 2,
-            borderRightColor: 'black',
-            borderRightWidth: 2,
-            borderBottomColor: 'black',
-            borderBottomWidth: 2,
-            borderLeftColor: 'black',
-            borderLeftWidth:2,
-            padding: 10,
-            textAlign: 'center',
-            width: 300
-        },
-        selfAlign : {
-            textAlign: 'center',
-            padding: 5,
-        },
-        alignCostButton : {
-            flex : 1,
-        },
-        line : {
-            flex : 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'row',
-        },
-        mainMoney: {
-            fontSize : 17,
-        },
-        suppInfo : {
-            fontSize: 10
-        }
-    });
-
     const title = "Ajouter " + IncomePerClick + " Par click ";
     return (
         <View style={styles.container}>
@@ -94,3 +52,44 @@ export function NewPage() {
         </View>
     )
 }
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingTop: 10
+    },
+    border: {
+        borderTopColor : 'black',
+        borderTopWidth: 2,
+        borderRightColor: 'black',
+        borderRightWidth: 2,
+        borderBottomColor: 'black',
+        borderBottomWidth: 2,
+        borderLeftColor: 'black',
+        borderLeftWidth:2,
+        padding: 10,
+        textAlign: 'center',
+        width: 300
+    },
+    selfAlign : {
+        textAlign: 'center',
+        padding: 5,
+    },
+    alignCostButton : {
+        flex : 1,
+    },
+    line : {
+        flex : 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+    },
+    mainMoney: {
+        fontSize : 17,
+    },
+    suppInfo : {
+        fontSize: 10
+    }
+});
