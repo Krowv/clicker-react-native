@@ -38,8 +38,7 @@ export function NewPage() {
         <Text>Argent : {counter} </Text>
         <Button title="Add + 25" onPress={addTwentyFiveStacks}></Button>
         <Text>Coût : {costOfTheAugment}</Text>
-        <Button title="Add 1 on your click" onPress={incrementCost}></Button>
-        <Button title="Add 1000"></Button>
+        
     </View>
  )   
 
