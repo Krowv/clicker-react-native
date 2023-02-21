@@ -13,8 +13,6 @@ export function GameCounterProvider({children}){
                 {children}
             </CostValue.Provider>
         </CostSetter.Provider>
-        
-        
     )
 }
 
