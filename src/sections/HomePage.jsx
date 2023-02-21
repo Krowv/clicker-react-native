@@ -3,25 +3,15 @@ import {StyleSheet, Text, Pressable, Image, Dimensions} from 'react-native';
 import {useCounterSetter, useCounterValue, useValueToAdd} from "../providers/GameProvider";
 import {Video} from "expo-av";
 import React, {useEffect, useState} from "react";
+import {useAutoClickerIncomeValue} from "../providers/GameAutoClickerProvider";
 export function HomePage() {
     const counter = useCounterValue();
     const setCounter = useCounterSetter();
-    const videoRef = React.useRef(null);
     const valueToAdd = useValueToAdd();
-    const [autoClicker, setAutoclicker] = useState(false);
+    const autoClickerValue = useAutoClickerIncomeValue()
     const onPress = () => {
         setCounter(counter+valueToAdd)
     }
-
-    // Au lancement de la page, un autoclicker se lance,
-    useEffect(() => {
-        setInterval(() => {
-            setCounter((preValue) => {
-                return preValue + 1;
-            })
-        }, 1000)
-    }, [autoClicker]);
-
     return (
         <Pressable style={styles.container} onPress={onPress}>
             <Video
@@ -29,13 +19,14 @@ export function HomePage() {
                 style={styles.backgroundVideo}
                 muted={true}
                 repeat={true}
-                resizeMode={"cover"}
+                resizeMode="cover"
                 rate={1.0}
                 ignoreSilentSwitch={"obey"}
                 shouldPlay={true}
                 isLooping={true}
             />
-            <Text style={{color: 'white'}}>lignes de code : {counter}</Text>
+            <Text style={[styles.homeText, styles.homeTitle]}>lignes de code : {counter}</Text>
+            <Text style={[styles.homeText, styles.homeSubTitle]}>Revenus passifs : {autoClickerValue}/s</Text>
             <StatusBar style="auto" />
         </Pressable>
     );
@@ -46,7 +37,9 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'lightblue',
         alignItems: 'center',
-        color: 'white'
+        color: 'white',
+        fontSize: '24px',
+        fontWeight: 'bold',
     },
     backgroundVideo: {
         height: height,
@@ -56,5 +49,14 @@ const styles = StyleSheet.create({
         alignItems: "stretch",
         bottom: 0,
         right: 0
+    },
+    homeText: {
+        color: 'white',
+    },
+    homeTitle: {
+        fontSize: 18,
+    },
+    homeSubTitle: {
+        fontSize: 14,
     }
 });

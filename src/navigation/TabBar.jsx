@@ -1,10 +1,9 @@
-import {createBottomTabNavigator, createButtonTabNavigation} from "@react-navigation/bottom-tabs";
+import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import { HomePage } from "../sections/HomePage";
 import { NewPage } from "../sections/NewPage";
 import { ProfilePage } from "../sections/ProfilePage";
 const Tab = createBottomTabNavigator();
-import {Image, StyleSheet} from 'react-native';
-
+import {Image} from 'react-native';
 export function TabNavigator() {
     return (
     <Tab.Navigator>
@@ -16,7 +15,7 @@ export function TabNavigator() {
                 tabBarIcon: ({focused}) => (
                     <Image
                         style={{
-                            tintColor: focused ? '#1a0dab' : "black",
+                            tintColor: focused ? '#1a0dab' : "",
                             height: 24,
                             width: 24,
                         }}
@@ -35,7 +34,7 @@ export function TabNavigator() {
                 tabBarIcon: ({focused}) => (
                     <Image
                         style={{
-                            tintColor: focused ? '#1a0dab' : "black",
+                            tintColor: focused ? '#1a0dab' : "",
                             height: 24,
                             width: 24,
                         }}
@@ -54,7 +53,7 @@ export function TabNavigator() {
                 tabBarIcon: ({focused}) => (
                     <Image
                         style={{
-                            tintColor: focused ? '#1a0dab' : "black",
+                            tintColor: focused ? '#1a0dab' : "",
                             height: 24,
                             width: 24,
                         }}

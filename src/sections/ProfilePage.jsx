@@ -36,7 +36,6 @@ export function ProfilePage() {
             </View>
         </>
     )
-
 }
 const styles = StyleSheet.create({
     profilePictureGlobal: {
