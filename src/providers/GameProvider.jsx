@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 const CounterValue = createContext(0);
 // On déclares que c'est une fonction vide au préalable
-const CounterSetter = createContext(()=>{});
+const CounterSetter = createContext(number=>{});
 
 export function GameProvider({children}){
     const [counter, setCounter] = useState(0);
