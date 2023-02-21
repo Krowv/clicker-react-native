@@ -1,19 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import {useEffect, useState} from "react";
-import { useCounterValue, useCounterSetter } from '../providers/GameProvider';
+import { useCounterValue, useCounterSetter, useValueToAdd, useValueToAddSetter } from '../providers/GameProvider';
 
 export function HomePage() {
     const counter = useCounterValue();
     const setCounter = useCounterSetter();
 
+    const valueToAdd = useValueToAdd();
+    
+
     const [autoClicker, setAutoclicker] = useState(false);
 
     const onPress = () => {
-        setCounter(counter+1)
+        setCounter(counter+valueToAdd)
     }
 
-    // Au lancement de la page, un autoclicker se lance
+    // Au lancement de la page, un autoclicker se lance, 
     useEffect(() => {
         setInterval(() => {
             setCounter((preValue) => {
