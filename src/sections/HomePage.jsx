@@ -1,16 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import {StyleSheet, Text, Pressable, Image, Dimensions} from 'react-native';
-import {useCounterSetter, useCounterValue, useValueToAdd} from "../providers/GameProvider";
+import { StyleSheet, Text, Pressable, Dimensions } from 'react-native';
+import { useCounterValue, useCounterSetter } from '../providers/GameProvider';
 import {Video} from "expo-av";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {useAutoClickerIncomeValue} from "../providers/GameAutoClickerProvider";
+import { useIncomeAddedPerClick, useIncomeAddedPerClickSetter } from '../providers/IncomePerClickProvider';
 export function HomePage() {
     const counter = useCounterValue();
     const setCounter = useCounterSetter();
-    const valueToAdd = useValueToAdd();
+    const videoRef = React.useRef(null);
+    const incomePerClick = useIncomeAddedPerClick();
+    const setIncomePerClick = useIncomeAddedPerClickSetter();
+    const [autoClicker, setAutoclicker] = useState(false);
     const autoClickerValue = useAutoClickerIncomeValue()
     const onPress = () => {
-        setCounter(counter+valueToAdd)
+        setCounter(counter+incomePerClick)
     }
     return (
         <Pressable style={styles.container} onPress={onPress}>
