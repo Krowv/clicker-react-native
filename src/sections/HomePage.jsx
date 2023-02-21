@@ -3,10 +3,10 @@ import { StyleSheet, Text, View, Button, Pressable } from 'react-native';
 import {useEffect, useState} from "react";
 import { useCounterValue, useCounterSetter, useValueToAdd, useValueToAddSetter } from '../providers/GameProvider';
 
-
 export function HomePage() {
     const counter = useCounterValue();
     const setCounter = useCounterSetter();
+
 
 
     const valueToAdd = useValueToAdd();
