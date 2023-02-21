@@ -6,7 +6,7 @@ const CounterSetter = createContext(number=>{});
 
 const ValueAdded = createContext(1);
 
-const ValueAddedSetter = createContext(() => {})
+const ValueAddedSetter = createContext(p => {})
 
 export function GameProvider({children}){
     const [counter, setCounter] = useState(0);

@@ -15,7 +15,7 @@ export function NewPage() {
 
     const addTwentyFiveStacks = () =>{
         if (counter > costOfTheAugment) {
-            setValueToAdd(preValue => preValue + 25)
+            setValueToAdd(preValue => preValue * 1.5)
             setCounter(preValue => preValue - costOfTheAugment);
             incrementCost();
         }
