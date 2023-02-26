@@ -2,8 +2,25 @@ import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import { HomePage } from "../sections/HomePage";
 import { NewPage } from "../sections/NewPage";
 import { ProfilePage } from "../sections/ProfilePage";
-const Tab = createBottomTabNavigator();
 import {Image} from 'react-native';
+
+const Tab = createBottomTabNavigator();
+
+function TabBarIcon({focused, imageUri}){
+  return (
+    <Image
+      style={{
+        tintColor: focused ? '#1a0dab' : "",
+        height: 24,
+        width: 24,
+      }}
+      source= {{
+        uri: imageUri,
+      }}
+    />
+  )
+}
+
 export function TabNavigator() {
     return (
     <Tab.Navigator>
@@ -13,16 +30,7 @@ export function TabNavigator() {
             options={{
                 title:'Accueil',
                 tabBarIcon: ({focused}) => (
-                    <Image
-                        style={{
-                            tintColor: focused ? '#1a0dab' : "",
-                            height: 24,
-                            width: 24,
-                        }}
-                        source= {{
-                            uri: "https://cdn-icons-png.flaticon.com/512/25/25694.png",
-                        }}
-                    />
+                    <TabBarIcon imageUri="https://cdn-icons-png.flaticon.com/512/25/25694.png" focused={focused} />
                 ),
             }} 
         />
@@ -32,16 +40,7 @@ export function TabNavigator() {
             options={{
                 title:'Magasin',
                 tabBarIcon: ({focused}) => (
-                    <Image
-                        style={{
-                            tintColor: focused ? '#1a0dab' : "",
-                            height: 24,
-                            width: 24,
-                        }}
-                        source= {{
-                            uri: "https://cdn-icons-png.flaticon.com/512/126/126083.png",
-                        }}
-                    />
+                    <TabBarIcon imageUri="https://cdn-icons-png.flaticon.com/512/126/126083.png" focused={focused} />
                 ),
             }}
         />
@@ -51,16 +50,7 @@ export function TabNavigator() {
             options={{
                 title:'Profil',
                 tabBarIcon: ({focused}) => (
-                    <Image
-                        style={{
-                            tintColor: focused ? '#1a0dab' : "",
-                            height: 24,
-                            width: 24,
-                        }}
-                        source= {{
-                            uri: "https://cdn-icons-png.flaticon.com/512/16/16363.png",
-                        }}
-                    />
+                    <TabBarIcon imageUri="https://cdn-icons-png.flaticon.com/512/16/16363.png" focused={focused} />
                 ),
             }}
         />
