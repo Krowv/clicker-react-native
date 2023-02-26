@@ -1,12 +1,10 @@
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
-import { useCounterValue } from '../providers/GameProvider';
 //On ajoute imagePicker
 import * as ImagePicker from 'expo-image-picker';
 import {useState} from "react";
 
 export function ProfilePage() {
     const [image, setImage] = useState(null);
-    const counter = useCounterValue();
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -19,6 +17,7 @@ export function ProfilePage() {
             setImage(result.assets[0].uri);
         }
     };
+
     return (
         <>
             <View style={styles.profilePictureGlobal}>

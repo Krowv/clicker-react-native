@@ -1,36 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, Pressable, Dimensions } from 'react-native';
-import { useCounterValue, useCounterSetter } from '../providers/GameProvider';
 import {Video} from "expo-av";
-import React, {useState} from "react";
-import {useAutoClickerIncomeValue} from "../providers/GameAutoClickerProvider";
-import { useIncomeAddedPerClick, useIncomeAddedPerClickSetter } from '../providers/IncomePerClickProvider';
+import React from "react";
+import { useGameDispatch, useGameState } from '../providers/GameProvider';
+
 export function HomePage() {
-    const counter = useCounterValue();
-    const setCounter = useCounterSetter();
-    const videoRef = React.useRef(null);
-    const incomePerClick = useIncomeAddedPerClick();
-    const setIncomePerClick = useIncomeAddedPerClickSetter();
-    const [autoClicker, setAutoclicker] = useState(false);
-    const autoClickerValue = useAutoClickerIncomeValue()
+    const gameState = useGameState()
+    const dispatch = useGameDispatch()
     const onPress = () => {
-        setCounter(counter+incomePerClick)
+        dispatch("incrementCounter")
     }
+    
+    /* Lorsqu'on passe un boolean en props avec la valeur true il est pas nécessaire de le specifier shouldPlay={true} est équivalent a shouldPlay  */
     return (
         <Pressable style={styles.container} onPress={onPress}>
             <Video
+                shouldPlay
+                isLooping
+                muted
+                repeat
                 source={require("../../assets/video1.mp4")}
                 style={styles.backgroundVideo}
-                muted={true}
-                repeat={true}
                 resizeMode="cover"
                 rate={1.0}
                 ignoreSilentSwitch={"obey"}
-                shouldPlay={true}
-                isLooping={true}
             />
-            <Text style={[styles.homeText, styles.homeTitle]}>lignes de code : {counter}</Text>
-            <Text style={[styles.homeText, styles.homeSubTitle]}>Revenus passifs : {autoClickerValue}/s</Text>
+            <Text style={[styles.homeText, styles.homeTitle]}>lignes de code : {gameState.counter}</Text>
+            <Text style={[styles.homeText, styles.homeSubTitle]}>Revenus passifs : {gameState.autoClickerIncome}/s</Text>
             <StatusBar style="auto" />
         </Pressable>
     );
